@@ -71,7 +71,7 @@
       z-index: 0;
     }
 
-    /* Enhanced Large Logo Dimensions */
+    /* Strict Equalized Logo Scaling for Both Modes */
     #navbar-logo {
       width: 68px !important;
       height: 68px !important;
@@ -179,6 +179,7 @@
       <!-- Desktop Links -->
       <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-300">
         <a href="#about" class="nav-scroll-link hover:text-brand-500 transition-colors" data-i18n="nav_about">About</a>
+        <a href="#education" class="nav-scroll-link hover:text-brand-500 transition-colors" data-i18n="nav_edu">Education</a>
         <a href="#experience" class="nav-scroll-link hover:text-brand-500 transition-colors" data-i18n="nav_exp">Experience</a>
         <a href="#courses" class="nav-scroll-link hover:text-brand-500 transition-colors" data-i18n="nav_courses">Certificates</a>
         <a href="#skills" class="nav-scroll-link hover:text-brand-500 transition-colors" data-i18n="nav_skills">Skills</a>
@@ -205,6 +206,7 @@
     <!-- Mobile Navigation Drawer -->
     <div id="mobile-menu" class="hidden md:hidden px-6 py-5 bg-white dark:bg-darkSurface border-b border-slate-200 dark:border-slate-800 flex flex-col gap-4">
       <a href="#about" class="mobile-link nav-scroll-link text-sm font-medium" data-i18n="nav_about">About</a>
+      <a href="#education" class="mobile-link nav-scroll-link text-sm font-medium" data-i18n="nav_edu">Education</a>
       <a href="#experience" class="mobile-link nav-scroll-link text-sm font-medium" data-i18n="nav_exp">Experience</a>
       <a href="#courses" class="mobile-link nav-scroll-link text-sm font-medium" data-i18n="nav_courses">Certificates</a>
       <a href="#skills" class="mobile-link nav-scroll-link text-sm font-medium" data-i18n="nav_skills">Skills</a>
@@ -215,100 +217,124 @@
 
   <main class="max-w-7xl mx-auto px-4 sm:px-8 pt-24" id="top">
 
-    <!-- 3. Dynamic Responsive Hero -->
+    <!-- 3. Dynamic Responsive Hero with Personal Image -->
     <section class="relative min-h-[520px] rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-slate-100 via-white to-slate-200 dark:from-slate-900 dark:via-slate-950 dark:to-darkBg my-6 flex items-center p-8 sm:p-14 text-slate-900 dark:text-white shadow-xl dark:shadow-2xl transition-colors duration-300" data-aos="fade-up">
       <canvas id="hero-canvas"></canvas>
-      <div class="relative z-10 max-w-2xl">
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-600 dark:text-brand-400 font-mono text-xs font-semibold mb-6">
-          <span class="w-2 h-2 rounded-full bg-brand-500 dark:bg-brand-400 animate-ping"></span>
-          <span data-i18n="hero_status">Available for Front-End & Software Projects</span>
+      <div class="relative z-10 w-full flex flex-col-reverse lg:flex-row items-center justify-between gap-8">
+        <div class="max-w-2xl text-center lg:text-left rtl:lg:text-right">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-600 dark:text-brand-400 font-mono text-xs font-semibold mb-6">
+            <span class="w-2 h-2 rounded-full bg-brand-500 dark:bg-brand-400 animate-ping"></span>
+            <span data-i18n="hero_status">Available for Front-End & Software Projects</span>
+          </div>
+          <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight mb-4" data-i18n="personal_name">
+            Kareem Hegazy
+          </h1>
+          <p class="text-xl sm:text-2xl font-mono text-slate-700 dark:text-slate-300 font-medium mb-6 flex items-center justify-center lg:justify-start rtl:lg:justify-start gap-3">
+            <span class="text-brand-600 dark:text-brand-400">&gt;</span> <span data-i18n="personal_title">Software Engineer</span>
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0" data-i18n="hero_desc">
+            Computer Science student focused on modern Front-End development with React.js and robust software architectures.
+          </p>
+          <div class="flex flex-wrap items-center justify-center lg:justify-start rtl:lg:justify-start gap-4">
+            <a href="#contact" class="nav-scroll-link px-6 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-white dark:text-slate-950 font-bold text-sm inline-flex items-center gap-2 transition-all hover:shadow-lg hover:shadow-brand-500/25">
+              <i class="fa-regular fa-paper-plane"></i>
+              <span data-i18n="btn_contact">Contact Me</span>
+            </a>
+            <a href="#projects" class="nav-scroll-link px-6 py-3 rounded-xl bg-slate-200/80 hover:bg-slate-300/80 dark:bg-slate-800/80 dark:hover:bg-slate-700/80 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-white font-medium text-sm inline-flex items-center gap-2 transition-all">
+              <i class="fa-solid fa-code-branch"></i>
+              <span data-i18n="btn_work">View Github Work</span>
+            </a>
+          </div>
         </div>
-        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight mb-4" data-i18n="personal_name">
-          Kareem Hegazy
-        </h1>
-        <p class="text-xl sm:text-2xl font-mono text-slate-700 dark:text-slate-300 font-medium mb-6 flex items-center gap-3">
-          <span class="text-brand-600 dark:text-brand-400">&gt;</span> <span data-i18n="personal_title">Software Engineer</span>
-        </p>
-        <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed mb-8 max-w-xl" data-i18n="hero_desc">
-          Computer Science student focused on modern Front-End development with React.js, data analysis with Python, and robust software architectures.
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <a href="#contact" class="nav-scroll-link px-6 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-white dark:text-slate-950 font-bold text-sm inline-flex items-center gap-2 transition-all hover:shadow-lg hover:shadow-brand-500/25">
-            <i class="fa-regular fa-paper-plane"></i>
-            <span data-i18n="btn_contact">Contact Me</span>
-          </a>
-          <a href="#projects" class="nav-scroll-link px-6 py-3 rounded-xl bg-slate-200/80 hover:bg-slate-300/80 dark:bg-slate-800/80 dark:hover:bg-slate-700/80 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-white font-medium text-sm inline-flex items-center gap-2 transition-all">
-            <i class="fa-solid fa-code-branch"></i>
-            <span data-i18n="btn_work">View Github Work</span>
-          </a>
+
+        <!-- Personal Image Container -->
+        <div class="shrink-0 flex items-center justify-center">
+          <div class="relative w-44 h-44 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full p-2 border-2 border-brand-500/40 shadow-2xl shadow-brand-500/20 bg-gradient-to-b from-brand-500/10 to-transparent transition-transform duration-500 hover:scale-105">
+            <img src="personal.png" alt="Kareem Hegazy" class="w-full h-full object-cover rounded-full shadow-inner" />
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 4. Profile & Education -->
+    <!-- 4. Profile Section (Independent Stack) -->
     <section id="about" class="py-16 border-b border-slate-200 dark:border-slate-800/60" data-aos="fade-up">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div class="lg:col-span-2">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="font-mono text-brand-500 font-bold text-sm">01.</span>
-            <h2 class="text-2xl font-bold tracking-tight" data-i18n="sec_profile">PROFILE</h2>
+      <div class="flex items-center gap-3 mb-6">
+        <span class="font-mono text-brand-500 font-bold text-sm">01.</span>
+        <h2 class="text-2xl font-bold tracking-tight" data-i18n="sec_profile">PROFILE</h2>
+      </div>
+      <div class="interactive-card p-6 sm:p-8 rounded-2xl bg-white dark:bg-darkCard shadow-sm leading-relaxed text-slate-600 dark:text-slate-300 text-base" data-i18n="cv_profile">
+        Computer Science student at Shorouk Academy (GPA: 3.48) with foundational knowledge in software development, AI concepts, and Front-End technologies. Gained practical experience in Python programming and data exploration through team-based AI projects, and currently building Front-End skills with React.js through the DEPI initiative. Motivated learner with strong problem-solving and team collaboration skills. 
+      </div>
+    </section>
+
+    <!-- 5. Education Section (Stacked with Dark/Light University Image) -->
+    <section id="education" class="py-16 border-b border-slate-200 dark:border-slate-800/60" data-aos="fade-up">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="font-mono text-brand-500 font-bold text-sm">02.</span>
+        <h2 class="text-2xl font-bold tracking-tight" data-i18n="sec_education">EDUCATION</h2>
+      </div>
+      <div class="interactive-card p-6 sm:p-8 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-5 w-full sm:w-auto">
+          <!-- University Logo / Image -->
+          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-2 flex items-center justify-center shrink-0 shadow-sm">
+            <img id="university-logo" src="university dark.png" alt="Shorouk Academy" class="w-full h-full object-contain" />
           </div>
-          <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm leading-relaxed text-slate-600 dark:text-slate-300 text-base" data-i18n="cv_profile">
-            Computer Science student at Shorouk Academy (GPA: 3.48) with foundational knowledge in software development, AI concepts, and Front-End technologies. Gained practical experience in Python programming and data exploration through team-based AI projects, and currently building Front-End skills with React.js through the DEPI initiative. Motivated learner with strong problem-solving and team collaboration skills.
+          <div>
+            <h3 class="font-bold text-lg sm:text-xl text-slate-900 dark:text-white" data-i18n="degree_name">B.Sc. Computer Science</h3>
+            <p class="text-sm sm:text-base text-slate-500" data-i18n="uni_name">Shorouk Academy</p>
           </div>
         </div>
-
-        <div>
-          <div class="flex items-center gap-3 mb-4">
-            <span class="font-mono text-brand-500 font-bold text-sm">02.</span>
-            <h2 class="text-2xl font-bold tracking-tight" data-i18n="sec_education">EDUCATION</h2>
-          </div>
-          <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm">
-            <div class="flex items-start justify-between">
-              <div>
-                <h3 class="font-bold text-base" data-i18n="degree_name">B.Sc. Computer Science</h3>
-                <p class="text-sm text-slate-500" data-i18n="uni_name">Shorouk Academy</p>
-              </div>
-              <span class="px-2.5 py-1 rounded-md bg-brand-500/10 text-brand-600 dark:text-brand-400 font-mono text-xs font-bold">GPA: 3.48</span>
-            </div>
-          </div>
+        <div class="w-full sm:w-auto flex justify-end">
+          <span class="px-4 py-2 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-400 font-mono text-sm font-bold border border-brand-500/20">GPA: 3.48</span>
         </div>
       </div>
     </section>
 
-    <!-- 5. Experience -->
+    <!-- 6. Experience Section (Stacked Full-Width Cards with Images) -->
     <section id="experience" class="py-16 border-b border-slate-200 dark:border-slate-800/60" data-aos="fade-up">
-      <div class="flex items-center gap-3 mb-8">
+      <div class="flex items-center gap-3 mb-6">
         <span class="font-mono text-brand-500 font-bold text-sm">03.</span>
         <h2 class="text-2xl font-bold tracking-tight" data-i18n="sec_experience">EXPERIENCE</h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- IEEE Experience -->
-        <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start mb-2">
-              <h3 class="font-bold text-lg">Data Science & AI WorkShop</h3>
-              <span class="text-xs font-mono text-brand-600 dark:text-brand-400 font-medium" data-i18n="exp_ieee_date">Feb 2026 - Aug 2026</span>
+      <div class="flex flex-col gap-6">
+        <!-- IEEE Experience with Theme Aware Image -->
+        <div class="interactive-card p-6 sm:p-8 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col gap-5">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-2 flex items-center justify-center shrink-0 shadow-sm">
+                <img id="ieee-logo" src="IEEE dark.webp" alt="IEEE" class="w-full h-full object-contain" />
+              </div>
+              <div>
+                <h3 class="font-bold text-lg sm:text-xl text-slate-900 dark:text-white">Data Science & AI WorkShop</h3>
+                <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mt-0.5">IEEE</p>
+              </div>
             </div>
-            <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-4">IEEE</p>
-            <p class="text-sm text-slate-600 dark:text-slate-300 mb-3" data-i18n="exp_ieee_desc">
-              Python fundamentals, data analysis with NumPy & Pandas, Data Visualization, Data Preprocessing, Machine Learning & Model Evaluation, and Deployment.
-            </p>
+            <span class="text-xs font-mono text-brand-600 dark:text-brand-400 font-semibold px-3.5 py-1.5 bg-brand-500/10 rounded-xl" data-i18n="exp_ieee_date">Feb 2026 - Aug 2026</span>
           </div>
-          <div class="pt-4 border-t border-slate-100 dark:border-slate-800">
-            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 block mb-1" data-i18n="exp_ieee_capstone_label">Final Capstone Project:</span>
-            <p class="text-xs font-mono text-brand-600 dark:text-brand-400" data-i18n="exp_ieee_capstone_val">Developing a Machine Learning model for Flight Delay Prediction.</p>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="exp_ieee_desc">
+            Python fundamentals, data analysis with NumPy & Pandas, Data Visualization, Data Preprocessing, Machine Learning & Model Evaluation, and Deployment.
+          </p>
+          <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-start sm:items-center gap-2">
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400" data-i18n="exp_ieee_capstone_label">Final Capstone Project:</span>
+            <p class="text-xs font-mono text-brand-600 dark:text-brand-400 font-medium" data-i18n="exp_ieee_capstone_val">Developing a Machine Learning model for Flight Delay Prediction.</p>
           </div>
         </div>
 
-        <!-- Sarai Market Experience -->
-        <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm">
-          <div class="flex justify-between items-start mb-2">
-            <h3 class="font-bold text-lg">Retail & Merchandising Associate</h3>
-            <span class="text-xs font-mono text-slate-500">2025</span>
+        <!-- Sarai Market Experience with sarai.png -->
+        <div class="interactive-card p-6 sm:p-8 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col gap-5">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-2 flex items-center justify-center shrink-0 shadow-sm">
+                <img src="sarai.png" alt="Sarai Market" class="w-full h-full object-contain" />
+              </div>
+              <div>
+                <h3 class="font-bold text-lg sm:text-xl text-slate-900 dark:text-white">Retail & Merchandising Associate</h3>
+                <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mt-0.5">Sarai Market</p>
+              </div>
+            </div>
+            <span class="text-xs font-mono text-slate-500 px-3.5 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-xl">2025</span>
           </div>
-          <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-4">Sarai Market</p>
           <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
             <li class="flex items-start gap-2">
               <i class="fa-solid fa-angle-right text-brand-500 mt-1 text-xs"></i>
@@ -327,137 +353,147 @@
       </div>
     </section>
 
-    <!-- 6. Courses and Certificates -->
+    <!-- 7. Courses and Certificates with DEPI.png -->
     <section id="courses" class="py-16 border-b border-slate-200 dark:border-slate-800/60" data-aos="fade-up">
-      <div class="flex items-center gap-3 mb-8">
+      <div class="flex items-center gap-3 mb-6">
         <span class="font-mono text-brand-500 font-bold text-sm">04.</span>
         <h2 class="text-2xl font-bold tracking-tight" data-i18n="sec_courses">COURSES and CERTIFICATES</h2>
       </div>
 
-      <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="interactive-card p-6 sm:p-8 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <div class="flex items-center gap-4">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-xl shrink-0">
-            <i class="fa-solid fa-award"></i>
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-2 flex items-center justify-center shrink-0 shadow-sm">
+            <img src="DEPI.png" alt="DEPI" class="w-full h-full object-contain" />
           </div>
           <div>
-            <h3 class="font-bold text-lg">React Front-End Web Developer</h3>
+            <h3 class="font-bold text-lg sm:text-xl text-slate-900 dark:text-white">React Front-End Web Developer</h3>
             <p class="text-sm text-slate-500 dark:text-slate-400">DEPI</p>
           </div>
         </div>
         <div>
-          <span class="text-xs font-mono px-3 py-1.5 bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-full font-bold inline-block" data-i18n="depi_date">2026 in progress</span>
+          <span class="text-xs font-mono px-3.5 py-1.5 bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-full font-bold inline-block" data-i18n="depi_date">2026 in progress</span>
         </div>
       </div>
     </section>
 
-    <!-- 7. Skills -->
+    <!-- 8. Skills Section (Stacked Full-Width Categories) -->
     <section id="skills" class="py-16 border-b border-slate-200 dark:border-slate-800/60" data-aos="fade-up">
-      <div class="flex items-center gap-3 mb-8">
+      <div class="flex items-center gap-3 mb-6">
         <span class="font-mono text-brand-500 font-bold text-sm">05.</span>
         <h2 class="text-2xl font-bold tracking-tight" data-i18n="sec_skills">SKILLS</h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="flex flex-col gap-6">
         <!-- Programming Languages -->
-        <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm">
-          <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center text-lg mb-4">
-            <i class="fa-solid fa-terminal"></i>
+        <div class="interactive-card p-6 sm:p-8 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center text-lg shrink-0">
+              <i class="fa-solid fa-terminal"></i>
+            </div>
+            <h3 class="font-bold text-base sm:text-lg">Programming Languages</h3>
           </div>
-          <h3 class="font-bold text-base mb-3">Programming Languages</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">C</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">C#</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">Python</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">JavaScript (ES6+)</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">TypeScript</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">C</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">C#</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">Python</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">JavaScript (ES6+)</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">TypeScript</span>
           </div>
         </div>
 
         <!-- Web & Front-End -->
-        <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm">
-          <div class="w-10 h-10 rounded-lg bg-sky-500/10 text-sky-500 flex items-center justify-center text-lg mb-4">
-            <i class="fa-brands fa-react"></i>
+        <div class="interactive-card p-6 sm:p-8 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-sky-500/10 text-sky-500 flex items-center justify-center text-lg shrink-0">
+              <i class="fa-brands fa-react"></i>
+            </div>
+            <h3 class="font-bold text-base sm:text-lg">Web & Front-End Development</h3>
           </div>
-          <h3 class="font-bold text-base mb-3">Web & Front-End Development</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">HTML5</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">CSS3</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">Bootstrap</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">React.js</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">Responsive Web Design</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">HTML5</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">CSS3</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">Bootstrap</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">React.js</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">Responsive Web Design</span>
           </div>
         </div>
 
         <!-- Data Science & AI -->
-        <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm">
-          <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-lg mb-4">
-            <i class="fa-solid fa-chart-line"></i>
+        <div class="interactive-card p-6 sm:p-8 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-lg shrink-0">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h3 class="font-bold text-base sm:text-lg">Data Science & AI</h3>
           </div>
-          <h3 class="font-bold text-base mb-3">Data Science & AI</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">NumPy</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">Pandas</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">Data Visualization</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">Data Preprocessing</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">Machine Learning Fundamentals</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">NumPy</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">Pandas</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">Data Visualization</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">Data Preprocessing</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs font-mono">Machine Learning Fundamentals</span>
           </div>
         </div>
 
         <!-- Soft Skills -->
-        <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm">
-          <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-500 flex items-center justify-center text-lg mb-4">
-            <i class="fa-solid fa-users"></i>
+        <div class="interactive-card p-6 sm:p-8 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-500 flex items-center justify-center text-lg shrink-0">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <h3 class="font-bold text-base sm:text-lg">Soft Skills</h3>
           </div>
-          <h3 class="font-bold text-base mb-3">Soft Skills</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs" data-i18n="sk_collab">Team Collaboration</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs" data-i18n="sk_comm">Effective Communication</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs" data-i18n="sk_prob">Problem Solving</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs" data-i18n="sk_detail">Attention to Detail</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs" data-i18n="sk_collab">Team Collaboration</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs" data-i18n="sk_comm">Effective Communication</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs" data-i18n="sk_prob">Problem Solving</span>
+            <span class="px-3 py-1 rounded-md bg-slate-100 dark:bg-darkBg border border-slate-200 dark:border-slate-800 text-xs" data-i18n="sk_detail">Attention to Detail</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 8. Projects -->
+    <!-- 9. Projects Section (Stacked Full-Width Work Showcase) -->
     <section id="projects" class="py-16 border-b border-slate-200 dark:border-slate-800/60" data-aos="fade-up">
-      <div class="flex items-center gap-3 mb-8">
+      <div class="flex items-center gap-3 mb-6">
         <span class="font-mono text-brand-500 font-bold text-sm">06.</span>
         <h2 class="text-2xl font-bold tracking-tight" data-i18n="sec_projects">PROJECTS</h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="flex flex-col gap-6">
         <!-- Project 1 -->
-        <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col justify-between">
+        <div class="interactive-card p-6 sm:p-8 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col justify-between gap-4">
           <div>
-            <div class="flex justify-between items-center mb-4">
+            <div class="flex justify-between items-center mb-3">
               <span class="text-xs font-mono text-brand-600 dark:text-brand-400 font-bold">Multi-Task ML Pipeline</span>
               <a href="https://github.com/KareemHegazy2/Flight-Delay-Predictor/" target="_blank" class="text-slate-400 hover:text-brand-500 transition-colors" aria-label="GitHub Repository">
-                <i class="fa-brands fa-github text-xl"></i>
+                <i class="fa-brands fa-github text-2xl"></i>
               </a>
             </div>
-            <h3 class="font-bold text-lg mb-2">1. Flight Delay Predictor (Multi-Task ML Pipeline)</h3>
-            <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-4">Python, XGBoost, Scikit-Learn, Streamlit</p>
+            <h3 class="font-bold text-lg sm:text-xl mb-1">1. Flight Delay Predictor (Multi-Task ML Pipeline)</h3>
+            <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-3">Python, XGBoost, Scikit-Learn, Streamlit</p>
             <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4" data-i18n="proj_1_text">
               A collaborative multi-task ML project designed to predict flight delay risks and root causes. Contributed to the project by performing dataset overview and structural exploration using Python and Pandas.
             </p>
           </div>
-          <a href="https://github.com/KareemHegazy2/Flight-Delay-Predictor/" target="_blank" class="text-xs font-mono text-brand-600 dark:text-brand-400 hover:underline inline-flex items-center gap-2">
-            github.com/KareemHegazy2/Flight-Delay-Predictor/ <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-          </a>
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800">
+            <a href="https://github.com/KareemHegazy2/Flight-Delay-Predictor/" target="_blank" class="text-xs font-mono text-brand-600 dark:text-brand-400 hover:underline inline-flex items-center gap-2">
+              github.com/KareemHegazy2/Flight-Delay-Predictor/ <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          </div>
         </div>
 
         <!-- Project 2 -->
-        <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col justify-between">
+        <div class="interactive-card p-6 sm:p-8 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col justify-between gap-4">
           <div>
-            <div class="flex justify-between items-center mb-4">
+            <div class="flex justify-between items-center mb-3">
               <span class="text-xs font-mono text-brand-600 dark:text-brand-400 font-bold">CLI Application</span>
               <a href="https://github.com/KareemHegazy2/Python-Multi-Function-Calculator/" target="_blank" class="text-slate-400 hover:text-brand-500 transition-colors" aria-label="GitHub Repository">
-                <i class="fa-brands fa-github text-xl"></i>
+                <i class="fa-brands fa-github text-2xl"></i>
               </a>
             </div>
-            <h3 class="font-bold text-lg mb-2">2. Python Multi-Function Calculator</h3>
-            <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-4">Python, CLI, Data Structures</p>
+            <h3 class="font-bold text-lg sm:text-xl mb-1">2. Python Multi-Function Calculator</h3>
+            <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-3">Python, CLI, Data Structures</p>
             <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-2 mb-4">
               <li class="flex items-start gap-2">
                 <i class="fa-solid fa-angle-right text-brand-500 mt-1 text-xs"></i>
@@ -469,22 +505,24 @@
               </li>
             </ul>
           </div>
-          <a href="https://github.com/KareemHegazy2/Python-Multi-Function-Calculator/" target="_blank" class="text-xs font-mono text-brand-600 dark:text-brand-400 hover:underline inline-flex items-center gap-2">
-            github.com/KareemHegazy2/Python-Multi-Function-Calculator/ <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-          </a>
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800">
+            <a href="https://github.com/KareemHegazy2/Python-Multi-Function-Calculator/" target="_blank" class="text-xs font-mono text-brand-600 dark:text-brand-400 hover:underline inline-flex items-center gap-2">
+              github.com/KareemHegazy2/Python-Multi-Function-Calculator/ <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          </div>
         </div>
 
         <!-- Project 3 -->
-        <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col justify-between">
+        <div class="interactive-card p-6 sm:p-8 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col justify-between gap-4">
           <div>
-            <div class="flex justify-between items-center mb-4">
+            <div class="flex justify-between items-center mb-3">
               <span class="text-xs font-mono text-brand-600 dark:text-brand-400 font-bold">Banking Management</span>
               <a href="https://github.com/KareemHegazy2/Bank-Account-Management-System/" target="_blank" class="text-slate-400 hover:text-brand-500 transition-colors" aria-label="GitHub Repository">
-                <i class="fa-brands fa-github text-xl"></i>
+                <i class="fa-brands fa-github text-2xl"></i>
               </a>
             </div>
-            <h3 class="font-bold text-lg mb-2">3. CLI Python Banking System</h3>
-            <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-4">Python, CLI, Data Structures</p>
+            <h3 class="font-bold text-lg sm:text-xl mb-1">3. CLI Python Banking System</h3>
+            <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-3">Python, CLI, Data Structures</p>
             <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-2 mb-4">
               <li class="flex items-start gap-2">
                 <i class="fa-solid fa-angle-right text-brand-500 mt-1 text-xs"></i>
@@ -496,23 +534,25 @@
               </li>
             </ul>
           </div>
-          <a href="https://github.com/KareemHegazy2/Bank-Account-Management-System/" target="_blank" class="text-xs font-mono text-brand-600 dark:text-brand-400 hover:underline inline-flex items-center gap-2">
-            github.com/KareemHegazy2/Bank-Account-Management-System/ <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-          </a>
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800">
+            <a href="https://github.com/KareemHegazy2/Bank-Account-Management-System/" target="_blank" class="text-xs font-mono text-brand-600 dark:text-brand-400 hover:underline inline-flex items-center gap-2">
+              github.com/KareemHegazy2/Bank-Account-Management-System/ <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 9. Interactive Contact Section -->
+    <!-- 10. Interactive Contact Section -->
     <section id="contact" class="py-20 text-center" data-aos="fade-up">
       <div class="max-w-2xl mx-auto px-4">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 text-brand-500 font-mono text-xs font-semibold mb-4">
           <i class="fa-solid fa-bolt text-xs"></i>
-          <span data-i18n="contact_badge">LET'S TEAM UP & SHIP IT!</span>
+          <span data-i18n="contact_badge">LET'S TEAM UP & SHIP IT</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-i18n="contact_title">Ready to Kick Off Your Next Project? Let's Build It Together!</h2>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-i18n="contact_title">Ready to Kick Off Your Next Project? Let's Build It Together</h2>
         <p class="text-slate-600 dark:text-slate-400 mb-8 text-base leading-relaxed" data-i18n="contact_sub">
-          Got an idea in mind, a design waiting for code, or need a developer who gets things done? Let's connect right now, talk details, and bring your vision to life today!
+          Got an idea in mind, a design waiting for code, or need a developer who gets things done? Let's connect right now, talk details, and bring your vision to life today
         </p>
 
         <div class="inline-flex flex-wrap items-center justify-center gap-4">
@@ -537,312 +577,6 @@
 
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script>
-    AOS.init({
-      once: true,
-      duration: 750,
-      easing: 'ease-out-cubic',
-    });
-
-    // 1. Preloader Execution (>= 2500ms)
-    const minPreloaderDuration = 2500;
-    const startTimestamp = Date.now();
-    const loaderBar = document.getElementById('loader-bar');
-    const loaderPercent = document.getElementById('loader-percent');
-    const preloaderElement = document.getElementById('preloader');
-
-    const loaderInterval = setInterval(() => {
-      const elapsed = Date.now() - startTimestamp;
-      const progress = Math.min(Math.floor((elapsed / minPreloaderDuration) * 100), 100);
-      
-      loaderBar.style.width = `${progress}%`;
-      loaderPercent.textContent = `${progress}%`;
-
-      if (progress >= 100) {
-        clearInterval(loaderInterval);
-        setTimeout(() => {
-          preloaderElement.classList.add('opacity-0', 'pointer-events-none');
-          setTimeout(() => preloaderElement.remove(), 700);
-        }, 150);
-      }
-    }, 20);
-
-    // 2. Interactive Canvas Particles
-    const canvas = document.getElementById('hero-canvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-
-    function resizeCanvas() {
-      canvas.width = canvas.parentElement.offsetWidth;
-      canvas.height = canvas.parentElement.offsetHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.6;
-        this.vy = (Math.random() - 0.5) * 0.6;
-        this.radius = Math.random() * 1.5 + 0.8;
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-      }
-      draw(isDark) {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = isDark ? 'rgba(56, 189, 248, 0.45)' : 'rgba(2, 132, 199, 0.35)';
-        ctx.fill();
-      }
-    }
-
-    for (let i = 0; i < 32; i++) particles.push(new Particle());
-
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const isDark = document.documentElement.classList.contains('dark');
-      
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw(isDark);
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 110) {
-            ctx.beginPath();
-            ctx.strokeStyle = isDark 
-              ? `rgba(56, 189, 248, ${0.12 * (1 - dist / 110)})` 
-              : `rgba(2, 132, 199, ${0.12 * (1 - dist / 110)})`;
-            ctx.lineWidth = 0.8;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
-
-    // 3. Scroll-to-Top on Brand/Logo Click & Smooth Navigation
-    const brandTopBtn = document.getElementById('brand-scroll-top');
-    if (brandTopBtn) {
-      brandTopBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-    }
-
-    document.querySelectorAll('.nav-scroll-link').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const targetId = this.getAttribute('href');
-        if (targetId && targetId.startsWith('#')) {
-          e.preventDefault();
-          if (targetId === '#top') {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            return;
-          }
-          const targetElem = document.querySelector(targetId);
-          if (targetElem) {
-            const headerOffset = 80;
-            const elementPosition = targetElem.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
-          }
-        }
-      });
-    });
-
-    // 4. Interactive Card Click Ripple Animation
-    document.querySelectorAll('.interactive-card').forEach(card => {
-      card.addEventListener('click', function (e) {
-        if (e.target.closest('a')) return;
-
-        const rect = card.getBoundingClientRect();
-        const ripple = document.createElement('span');
-        ripple.classList.add('card-ripple');
-
-        const size = Math.max(rect.width, rect.height);
-        ripple.style.width = ripple.style.height = `${size}px`;
-        ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
-        ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
-
-        card.appendChild(ripple);
-
-        setTimeout(() => {
-          ripple.remove();
-        }, 650);
-      });
-    });
-
-    // 5. Strict Localization
-    const cvLocales = {
-      en: {
-        personal_name: "Kareem Hegazy",
-        personal_title: "Software Engineer",
-        hero_status: "Available for Front-End & Software Projects",
-        loader_welcome: "Welcome to my engineering space",
-        nav_about: "About",
-        nav_exp: "Experience",
-        nav_courses: "Certificates",
-        nav_skills: "Skills",
-        nav_projects: "Projects",
-        nav_contact: "Contact",
-        hero_desc: "Computer Science student focused on modern Front-End development with React.js, data analysis with Python, and robust software architectures.",
-        btn_contact: "Contact Me",
-        btn_work: "View Github Work",
-        sec_profile: "PROFILE",
-        cv_profile: "Computer Science student at Shorouk Academy (GPA: 3.48) with foundational knowledge in software development, AI concepts, and Front-End technologies. Gained practical experience in Python programming and data exploration through team-based AI projects, and currently building Front-End skills with React.js through the DEPI initiative. Motivated learner with strong problem-solving and team collaboration skills.",
-        sec_education: "EDUCATION",
-        degree_name: "B.Sc. Computer Science",
-        uni_name: "Shorouk Academy",
-        sec_experience: "EXPERIENCE",
-        exp_ieee_date: "Feb 2026 - Aug 2026",
-        exp_ieee_desc: "Python fundamentals, data analysis with NumPy & Pandas, Data Visualization, Data Preprocessing, Machine Learning & Model Evaluation, and Deployment.",
-        exp_ieee_capstone_label: "Final Capstone Project:",
-        exp_ieee_capstone_val: "Developing a Machine Learning model for Flight Delay Prediction.",
-        sarai_1: "Assisted customers promptly, utilizing strong communication and problem-solving skills.",
-        sarai_2: "Maintained full shelf stock by continuously restocking product lines from the warehouse.",
-        sarai_3: "Organized aesthetic shelf displays to enhance product visibility and store presentation.",
-        sec_courses: "COURSES and CERTIFICATES",
-        depi_date: "2026 in progress",
-        sec_skills: "SKILLS",
-        sk_collab: "Team Collaboration",
-        sk_comm: "Effective Communication",
-        sk_prob: "Problem Solving",
-        sk_detail: "Attention to Detail",
-        sec_projects: "PROJECTS",
-        proj_1_text: "A collaborative multi-task ML project designed to predict flight delay risks and root causes. Contributed to the project by performing dataset overview and structural exploration using Python and Pandas.",
-        proj_2_b1: "Built a CLI tool with 5 modules: basic math, temperature conversion, number systems, GPA calculation, and length conversion.",
-        proj_2_b2: "Structured modular code using functions and loops, with exception handling to manage invalid user inputs.",
-        proj_3_b1: "Developed a CLI banking application featuring user authentication (registration/login) and account management.",
-        proj_3_b2: "Implemented core banking operations: balance inquiry, deposits, withdrawals, fund transfers between accounts, and password updates.",
-        contact_badge: "LET'S TEAM UP & SHIP IT!",
-        contact_title: "Ready to Kick Off Your Next Project? Let's Build It Together!",
-        contact_sub: "Got an idea in mind, a design waiting for code, or need a developer who gets things done? Let's connect right now, talk details, and bring your vision to life today!",
-        footer_rights: "All CV specifications preserved."
-      },
-      ar: {
-        personal_name: "كريم حجازي",
-        personal_title: "مهندس برمجيات",
-        hero_status: "متاح لمشاريع الـ Front-End وتطوير البرمجيات",
-        loader_welcome: "مرحباً بك في مساحتي الهندسية والبرمجية",
-        nav_about: "الملف الشخصي",
-        nav_exp: "الخبرات",
-        nav_courses: "الشهادات والكورسات",
-        nav_skills: "المهارات",
-        nav_projects: "المشاريع",
-        nav_contact: "تواصل معي",
-        hero_desc: "طالب علوم حاسب أركز على تطوير واجهات الويب الحديثة بـ React.js، وتحليل البيانات بـ Python، وتصميم البنى البرمجية القوية.",
-        btn_contact: "تواصل معي",
-        btn_work: "مشاريع Github",
-        sec_profile: "الملف الشخصي (PROFILE)",
-        cv_profile: "طالب علوم حاسب في أكاديمية الشروق (GPA: 3.48) أمتلك معرفة أساسية في تطوير البرمجيات ومفاهيم الذكاء الاصطناعي وتقنيات Front-End. اكتسبت خبرة عملية في برمجة Python واستكشاف البيانات من خلال مشاريع الذكاء الاصطناعي الجماعية، وأبني حالياً مهارات Front-End بـ React.js عبر مبادرة DEPI. متعلم شغوف أمتلك مهارات قوية في حل المشكلات والعمل الجماعي.",
-        sec_education: "التعليم (EDUCATION)",
-        degree_name: "بكالوريوس علوم الحاسب",
-        uni_name: "أكاديمية الشروق",
-        sec_experience: "الخبرات (EXPERIENCE)",
-        exp_ieee_date: "فبراير 2026 - أغسطس 2026",
-        exp_ieee_desc: "أساسيات Python، تحليل البيانات بـ NumPy و Pandas، وتصور البيانات (Data Visualization)، ومعالجة البيانات مسبقاً (Data Preprocessing)، وتعلم الآلة وتقييم النماذج والنشر (Deployment).",
-        exp_ieee_capstone_label: "مشروع التخرج النهائي للورشة:",
-        exp_ieee_capstone_val: "تطوير نموذج Machine Learning للتنبؤ بمخاطر تأخر الرحلات الجوية.",
-        sarai_1: "مساعدة العملاء باحترافية وسرعة، باستخدام مهارات التواصل الفعال وحل المشكلات.",
-        sarai_2: "الحفاظ على امتلاء الأرفف بالبضائع باستمرار عبر إعادة التخزين المستمر من المستودع.",
-        sarai_3: "تنظيم وتنسيق واجهات العرض بشكل جمالي لتعزيز ظهور المنتجات والمظهر العام للمتجر.",
-        sec_courses: "الدورات والشهادات (COURSES and CERTIFICATES)",
-        depi_date: "2026 - قيد التقدم",
-        sec_skills: "المهارات (SKILLS)",
-        sk_collab: "العمل الجماعي (Team Collaboration)",
-        sk_comm: "التواصل الفعال (Effective Communication)",
-        sk_prob: "حل المشكلات (Problem Solving)",
-        sk_detail: "الدقة والاهتمام بالتفاصيل (Attention to Detail)",
-        sec_projects: "المشاريع (PROJECTS)",
-        proj_1_text: "مشروع Machine Learning تعاوني متعدد المهام مصمم للتنبؤ بمخاطر وأسباب تأخر الرحلات الجوية. ساهمت في المشروع بإجراء فحص البيانات والاستكشاف الهيكلي باستخدام Python و Pandas.",
-        proj_2_b1: "بناء أداة سطر أوامر (CLI) بـ 5 وحدات: العمليات الحسابية الأساسية، تحويل درجات الحرارة، أنظمة العد، حساب الـ GPA، وتحويل الأطوال.",
-        proj_2_b2: "هيكلة كود معياري باستخدام الدوال والتكرار (Loops)، مع معالجة الاستثناءات للتعامل مع مدخلات المستخدم غير الصحيحة.",
-        proj_3_b1: "تطوير تطبيق بنكي عبر سطر الأوامر (CLI) يدعم مصادقة المستخدمين (تسجيل الحساب/تسجيل الدخول) وإدارة الحسابات.",
-        proj_3_b2: "تنفيذ العمليات المصرفية الأساسية: الاستعلام عن الرصيد، الإيداع، السحب، تحويل الأموال بين الحسابات، وتحديث كلمات المرور.",
-        contact_badge: "يلا نبدأ ونشتغل سوا!",
-        contact_title: "جاهز تبدأ مشروعك القادم؟ يلا نشتغل سوا ونبنيه فوراً!",
-        contact_sub: "عندك فكرة مشروع في بالك، تصميم مستني الكود، أو محتاج مطور ينجز المطلوب بأعلى كفاءة؟ يلا نتواصل دلوقتي، نتفق على التفاصيل، ونحول فكرتك لواقع تفاعلي يشتغل على طول!",
-        footer_rights: "جميع مواصفات السيرة الذاتية محفوظة."
-      }
-    };
-
-    let curLang = localStorage.getItem('kh_lang') || 'en';
-    const langBtn = document.getElementById('lang-btn');
-    const langIndicator = document.getElementById('lang-indicator');
-
-    function switchLanguage(lang) {
-      curLang = lang;
-      localStorage.setItem('kh_lang', lang);
-      document.documentElement.lang = lang;
-      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-      langIndicator.textContent = lang === 'ar' ? 'EN' : 'AR';
-
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (cvLocales[lang] && cvLocales[lang][key]) {
-          el.textContent = cvLocales[lang][key];
-        }
-      });
-    }
-
-    langBtn.addEventListener('click', () => switchLanguage(curLang === 'en' ? 'ar' : 'en'));
-
-    // 6. Dark / Light Mode with Strict Equalized Scaling
-    const themeBtn = document.getElementById('theme-btn');
-    const themeIcon = themeBtn.querySelector('i');
-    const navLogo = document.getElementById('navbar-logo');
-    const preloaderLogo = document.getElementById('preloader-logo');
-
-    function applyTheme(isDark) {
-      if (isDark) {
-        document.documentElement.classList.add('dark');
-        themeIcon.className = 'fa-solid fa-sun';
-        localStorage.setItem('kh_theme', 'dark');
-        if (navLogo) navLogo.src = 'logo.png';
-        if (preloaderLogo) preloaderLogo.src = 'logo.png';
-      } else {
-        document.documentElement.classList.remove('dark');
-        themeIcon.className = 'fa-solid fa-moon';
-        localStorage.setItem('kh_theme', 'light');
-        if (navLogo) navLogo.src = 'logo light.png';
-        if (preloaderLogo) preloaderLogo.src = 'logo light.png';
-      }
-    }
-
-    themeBtn.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.contains('dark');
-      applyTheme(!isDark);
-    });
-
-    // 7. Mobile Drawer Toggle
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    });
-
-    // Booting Defaults
-    const savedTheme = localStorage.getItem('kh_theme') || 'dark';
-    applyTheme(savedTheme === 'dark');
-    switchLanguage(curLang);
-  </script>
+<script src="main.js"></script>
 </body>
 </html>
