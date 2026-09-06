@@ -44,6 +44,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -67,22 +70,93 @@
       pointer-events: none;
       z-index: 0;
     }
+
+    /* Enhanced Large Logo Dimensions */
+    #navbar-logo {
+      width: 68px !important;
+      height: 68px !important;
+      max-width: none !important;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+    html:not(.dark) #navbar-logo {
+      transform: scale(1.1);
+    }
+
+    #preloader-logo {
+      width: 185px !important;
+      height: 185px !important;
+      max-width: none !important;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+    html:not(.dark) #preloader-logo {
+      transform: scale(1.1);
+    }
+
+    /* Interactive Card with Solid Borders & Ambient Glow */
+    .interactive-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      user-select: none;
+      border: 1.5px solid transparent;
+      transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1), 
+                  box-shadow 0.22s ease, 
+                  border-color 0.22s ease, 
+                  background-color 0.22s ease;
+    }
+
+    .interactive-card:hover {
+      transform: translateY(-4px);
+      border-color: #38bdf8 !important;
+      box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.12), 0 0 15px 0 rgba(56, 189, 248, 0.08);
+    }
+    .dark .interactive-card:hover {
+      background-color: rgba(19, 29, 54, 0.95);
+      border-color: #0ea5e9 !important;
+      box-shadow: 0 10px 30px -8px rgba(14, 165, 233, 0.2), 0 0 20px 0 rgba(56, 189, 248, 0.1);
+    }
+
+    .interactive-card:active {
+      transform: scale(0.985);
+      border-color: #0284c7 !important;
+    }
+
+    .card-ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, rgba(56, 189, 248, 0) 70%);
+      transform: scale(0);
+      animation: rippleEffect 0.65s linear;
+      pointer-events: none;
+    }
+    @keyframes rippleEffect {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body class="bg-slate-50 dark:bg-darkBg text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 min-h-screen relative overflow-x-hidden">
 
   <!-- 1. Preloader Screen -->
   <div id="preloader" class="fixed inset-0 bg-slate-50 dark:bg-darkBg z-[99999] flex flex-col items-center justify-center transition-all duration-700">
-    <div class="relative w-32 h-32 mb-6 flex items-center justify-center animate-pulse">
-      <img id="preloader-logo" src="logo.png" alt="Logo" class="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(56,189,248,0.35)]" />
+    <div class="relative w-48 h-48 mb-3 flex items-center justify-center animate-pulse">
+      <img id="preloader-logo" src="logo.png" alt="Logo" class="drop-shadow-[0_0_30px_rgba(56,189,248,0.45)]" />
     </div>
     
+    <!-- Short Welcome Message -->
+    <p class="text-sm font-medium text-slate-600 dark:text-slate-300 mb-6 tracking-wide" data-i18n="loader_welcome">
+      Welcome to my engineering space
+    </p>
+
     <!-- Progress Bar -->
     <div class="w-64 h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden relative shadow-inner">
       <div id="loader-bar" class="w-0 h-full bg-gradient-to-r from-brand-600 via-brand-400 to-sky-300 transition-all duration-75"></div>
     </div>
-    <div class="flex justify-between w-64 mt-3 text-xs font-mono text-slate-500 dark:text-slate-400">
-      <span>ENVIRONMENT INIT</span>
+    <div class="flex justify-center w-64 mt-3 text-xs font-mono text-slate-500 dark:text-slate-400">
       <span id="loader-percent">0%</span>
     </div>
   </div>
@@ -91,24 +165,25 @@
   <header class="fixed top-0 left-0 right-0 h-20 bg-white/85 dark:bg-darkBg/85 backdrop-blur-md border-b border-slate-200 dark:border-slate-800/80 z-50 transition-colors duration-300">
     <div class="max-w-7xl mx-auto h-full px-4 sm:px-8 flex items-center justify-between">
       
-      <!-- Brand Logo & Name (Borderless and Scaled) -->
-      <a href="#" class="flex items-center gap-3.5 group">
-        <div class="w-12 h-12 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-          <img id="navbar-logo" src="logo.png" alt="Logo" class="w-full h-full object-contain" />
+      <!-- Brand Logo & Name (Click to Scroll to Top) -->
+      <a href="#top" id="brand-scroll-top" class="flex items-center gap-4 group cursor-pointer">
+        <div class="w-16 h-16 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+          <img id="navbar-logo" src="logo.png" alt="Logo" />
         </div>
         <div class="flex flex-col">
-          <span class="font-extrabold text-lg tracking-tight" data-i18n="personal_name">Kareem Hegazy</span>
+          <span class="font-extrabold text-lg tracking-tight group-hover:text-brand-500 transition-colors" data-i18n="personal_name">Kareem Hegazy</span>
           <span class="text-xs font-mono text-brand-600 dark:text-brand-400 font-semibold leading-tight" data-i18n="personal_title">Software Engineer</span>
         </div>
       </a>
 
       <!-- Desktop Links -->
       <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-300">
-        <a href="#about" class="hover:text-brand-500 transition-colors" data-i18n="nav_about">About</a>
-        <a href="#experience" class="hover:text-brand-500 transition-colors" data-i18n="nav_exp">Experience</a>
-        <a href="#skills" class="hover:text-brand-500 transition-colors" data-i18n="nav_skills">Skills</a>
-        <a href="#projects" class="hover:text-brand-500 transition-colors" data-i18n="nav_projects">Projects</a>
-        <a href="#contact" class="hover:text-brand-500 transition-colors" data-i18n="nav_contact">Contact</a>
+        <a href="#about" class="nav-scroll-link hover:text-brand-500 transition-colors" data-i18n="nav_about">About</a>
+        <a href="#experience" class="nav-scroll-link hover:text-brand-500 transition-colors" data-i18n="nav_exp">Experience</a>
+        <a href="#courses" class="nav-scroll-link hover:text-brand-500 transition-colors" data-i18n="nav_courses">Certificates</a>
+        <a href="#skills" class="nav-scroll-link hover:text-brand-500 transition-colors" data-i18n="nav_skills">Skills</a>
+        <a href="#projects" class="nav-scroll-link hover:text-brand-500 transition-colors" data-i18n="nav_projects">Projects</a>
+        <a href="#contact" class="nav-scroll-link hover:text-brand-500 transition-colors" data-i18n="nav_contact">Contact</a>
       </nav>
 
       <!-- Language & Theme Controllers -->
@@ -129,15 +204,16 @@
 
     <!-- Mobile Navigation Drawer -->
     <div id="mobile-menu" class="hidden md:hidden px-6 py-5 bg-white dark:bg-darkSurface border-b border-slate-200 dark:border-slate-800 flex flex-col gap-4">
-      <a href="#about" class="mobile-link text-sm font-medium" data-i18n="nav_about">About</a>
-      <a href="#experience" class="mobile-link text-sm font-medium" data-i18n="nav_exp">Experience</a>
-      <a href="#skills" class="mobile-link text-sm font-medium" data-i18n="nav_skills">Skills</a>
-      <a href="#projects" class="mobile-link text-sm font-medium" data-i18n="nav_projects">Projects</a>
-      <a href="#contact" class="mobile-link text-sm font-medium" data-i18n="nav_contact">Contact</a>
+      <a href="#about" class="mobile-link nav-scroll-link text-sm font-medium" data-i18n="nav_about">About</a>
+      <a href="#experience" class="mobile-link nav-scroll-link text-sm font-medium" data-i18n="nav_exp">Experience</a>
+      <a href="#courses" class="mobile-link nav-scroll-link text-sm font-medium" data-i18n="nav_courses">Certificates</a>
+      <a href="#skills" class="mobile-link nav-scroll-link text-sm font-medium" data-i18n="nav_skills">Skills</a>
+      <a href="#projects" class="mobile-link nav-scroll-link text-sm font-medium" data-i18n="nav_projects">Projects</a>
+      <a href="#contact" class="mobile-link nav-scroll-link text-sm font-medium" data-i18n="nav_contact">Contact</a>
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-8 pt-24">
+  <main class="max-w-7xl mx-auto px-4 sm:px-8 pt-24" id="top">
 
     <!-- 3. Dynamic Responsive Hero -->
     <section class="relative min-h-[520px] rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-slate-100 via-white to-slate-200 dark:from-slate-900 dark:via-slate-950 dark:to-darkBg my-6 flex items-center p-8 sm:p-14 text-slate-900 dark:text-white shadow-xl dark:shadow-2xl transition-colors duration-300" data-aos="fade-up">
@@ -157,11 +233,11 @@
           Computer Science student focused on modern Front-End development with React.js, data analysis with Python, and robust software architectures.
         </p>
         <div class="flex flex-wrap gap-4">
-          <a href="#contact" class="px-6 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-white dark:text-slate-950 font-bold text-sm inline-flex items-center gap-2 transition-all hover:shadow-lg hover:shadow-brand-500/25">
+          <a href="#contact" class="nav-scroll-link px-6 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-white dark:text-slate-950 font-bold text-sm inline-flex items-center gap-2 transition-all hover:shadow-lg hover:shadow-brand-500/25">
             <i class="fa-regular fa-paper-plane"></i>
             <span data-i18n="btn_contact">Contact Me</span>
           </a>
-          <a href="#projects" class="px-6 py-3 rounded-xl bg-slate-200/80 hover:bg-slate-300/80 dark:bg-slate-800/80 dark:hover:bg-slate-700/80 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-white font-medium text-sm inline-flex items-center gap-2 transition-all">
+          <a href="#projects" class="nav-scroll-link px-6 py-3 rounded-xl bg-slate-200/80 hover:bg-slate-300/80 dark:bg-slate-800/80 dark:hover:bg-slate-700/80 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-white font-medium text-sm inline-flex items-center gap-2 transition-all">
             <i class="fa-solid fa-code-branch"></i>
             <span data-i18n="btn_work">View Github Work</span>
           </a>
@@ -169,7 +245,7 @@
       </div>
     </section>
 
-    <!-- 4. Profile & Education (Strictly from CV) -->
+    <!-- 4. Profile & Education -->
     <section id="about" class="py-16 border-b border-slate-200 dark:border-slate-800/60" data-aos="fade-up">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div class="lg:col-span-2">
@@ -177,7 +253,7 @@
             <span class="font-mono text-brand-500 font-bold text-sm">01.</span>
             <h2 class="text-2xl font-bold tracking-tight" data-i18n="sec_profile">PROFILE</h2>
           </div>
-          <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 shadow-sm leading-relaxed text-slate-600 dark:text-slate-300 text-base" data-i18n="cv_profile">
+          <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm leading-relaxed text-slate-600 dark:text-slate-300 text-base" data-i18n="cv_profile">
             Computer Science student at Shorouk Academy (GPA: 3.48) with foundational knowledge in software development, AI concepts, and Front-End technologies. Gained practical experience in Python programming and data exploration through team-based AI projects, and currently building Front-End skills with React.js through the DEPI initiative. Motivated learner with strong problem-solving and team collaboration skills.
           </div>
         </div>
@@ -187,7 +263,7 @@
             <span class="font-mono text-brand-500 font-bold text-sm">02.</span>
             <h2 class="text-2xl font-bold tracking-tight" data-i18n="sec_education">EDUCATION</h2>
           </div>
-          <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm">
             <div class="flex items-start justify-between">
               <div>
                 <h3 class="font-bold text-base" data-i18n="degree_name">B.Sc. Computer Science</h3>
@@ -200,7 +276,7 @@
       </div>
     </section>
 
-    <!-- 5. Experience (Strictly from CV) -->
+    <!-- 5. Experience -->
     <section id="experience" class="py-16 border-b border-slate-200 dark:border-slate-800/60" data-aos="fade-up">
       <div class="flex items-center gap-3 mb-8">
         <span class="font-mono text-brand-500 font-bold text-sm">03.</span>
@@ -209,11 +285,11 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- IEEE Experience -->
-        <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+        <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col justify-between">
           <div>
             <div class="flex justify-between items-start mb-2">
               <h3 class="font-bold text-lg">Data Science & AI WorkShop</h3>
-              <span class="text-xs font-mono text-brand-600 dark:text-brand-400 font-medium" data-i18n="exp_ieee_date">Feb 2026-Aug 2026</span>
+              <span class="text-xs font-mono text-brand-600 dark:text-brand-400 font-medium" data-i18n="exp_ieee_date">Feb 2026 - Aug 2026</span>
             </div>
             <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-4">IEEE</p>
             <p class="text-sm text-slate-600 dark:text-slate-300 mb-3" data-i18n="exp_ieee_desc">
@@ -227,7 +303,7 @@
         </div>
 
         <!-- Sarai Market Experience -->
-        <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm">
           <div class="flex justify-between items-start mb-2">
             <h3 class="font-bold text-lg">Retail & Merchandising Associate</h3>
             <span class="text-xs font-mono text-slate-500">2025</span>
@@ -249,30 +325,41 @@
           </ul>
         </div>
       </div>
+    </section>
 
-      <!-- Training / Initiative -->
-      <div class="mt-6 p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between">
-        <div>
-          <span class="text-xs font-mono text-brand-500 font-bold uppercase tracking-wider block mb-1" data-i18n="sec_courses">COURSES and CERTIFICATES</span>
-          <h3 class="font-bold text-lg">React Front-End Web Developer</h3>
-          <p class="text-sm text-slate-500 dark:text-slate-400">DEPI</p>
+    <!-- 6. Courses and Certificates -->
+    <section id="courses" class="py-16 border-b border-slate-200 dark:border-slate-800/60" data-aos="fade-up">
+      <div class="flex items-center gap-3 mb-8">
+        <span class="font-mono text-brand-500 font-bold text-sm">04.</span>
+        <h2 class="text-2xl font-bold tracking-tight" data-i18n="sec_courses">COURSES and CERTIFICATES</h2>
+      </div>
+
+      <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-xl shrink-0">
+            <i class="fa-solid fa-award"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg">React Front-End Web Developer</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400">DEPI</p>
+          </div>
         </div>
-        <div class="text-right">
-          <span class="text-xs font-mono px-3 py-1 bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-full font-bold" data-i18n="depi_date">2026 in progress</span>
+        <div>
+          <span class="text-xs font-mono px-3 py-1.5 bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-full font-bold inline-block" data-i18n="depi_date">2026 in progress</span>
         </div>
       </div>
     </section>
 
-    <!-- 6. Skills (Strictly from CV) -->
+    <!-- 7. Skills -->
     <section id="skills" class="py-16 border-b border-slate-200 dark:border-slate-800/60" data-aos="fade-up">
       <div class="flex items-center gap-3 mb-8">
-        <span class="font-mono text-brand-500 font-bold text-sm">04.</span>
+        <span class="font-mono text-brand-500 font-bold text-sm">05.</span>
         <h2 class="text-2xl font-bold tracking-tight" data-i18n="sec_skills">SKILLS</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Programming Languages -->
-        <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm">
           <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center text-lg mb-4">
             <i class="fa-solid fa-terminal"></i>
           </div>
@@ -287,7 +374,7 @@
         </div>
 
         <!-- Web & Front-End -->
-        <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm">
           <div class="w-10 h-10 rounded-lg bg-sky-500/10 text-sky-500 flex items-center justify-center text-lg mb-4">
             <i class="fa-brands fa-react"></i>
           </div>
@@ -302,7 +389,7 @@
         </div>
 
         <!-- Data Science & AI -->
-        <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm">
           <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-lg mb-4">
             <i class="fa-solid fa-chart-line"></i>
           </div>
@@ -317,7 +404,7 @@
         </div>
 
         <!-- Soft Skills -->
-        <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm">
           <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-500 flex items-center justify-center text-lg mb-4">
             <i class="fa-solid fa-users"></i>
           </div>
@@ -332,16 +419,16 @@
       </div>
     </section>
 
-    <!-- 7. Projects (Strictly from CV) -->
+    <!-- 8. Projects -->
     <section id="projects" class="py-16 border-b border-slate-200 dark:border-slate-800/60" data-aos="fade-up">
       <div class="flex items-center gap-3 mb-8">
-        <span class="font-mono text-brand-500 font-bold text-sm">05.</span>
+        <span class="font-mono text-brand-500 font-bold text-sm">06.</span>
         <h2 class="text-2xl font-bold tracking-tight" data-i18n="sec_projects">PROJECTS</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Project 1 -->
-        <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+        <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col justify-between">
           <div>
             <div class="flex justify-between items-center mb-4">
               <span class="text-xs font-mono text-brand-600 dark:text-brand-400 font-bold">Multi-Task ML Pipeline</span>
@@ -361,7 +448,7 @@
         </div>
 
         <!-- Project 2 -->
-        <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+        <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col justify-between">
           <div>
             <div class="flex justify-between items-center mb-4">
               <span class="text-xs font-mono text-brand-600 dark:text-brand-400 font-bold">CLI Application</span>
@@ -388,7 +475,7 @@
         </div>
 
         <!-- Project 3 -->
-        <div class="p-6 rounded-2xl bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+        <div class="interactive-card p-6 rounded-2xl bg-white dark:bg-darkCard shadow-sm flex flex-col justify-between">
           <div>
             <div class="flex justify-between items-center mb-4">
               <span class="text-xs font-mono text-brand-600 dark:text-brand-400 font-bold">Banking Management</span>
@@ -416,24 +503,29 @@
       </div>
     </section>
 
-    <!-- 8. Contact Section (Direct CV Info) -->
+    <!-- 9. Interactive Contact Section -->
     <section id="contact" class="py-20 text-center" data-aos="fade-up">
-      <h2 class="text-3xl font-extrabold mb-3" data-i18n="contact_title">Get In Touch</h2>
-      <p class="text-slate-500 max-w-md mx-auto mb-8 text-sm" data-i18n="contact_sub">
-        Feel free to reach out directly via email, phone, or view my latest activities on LinkedIn and GitHub.
-      </p>
+      <div class="max-w-2xl mx-auto px-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 text-brand-500 font-mono text-xs font-semibold mb-4">
+          <i class="fa-solid fa-bolt text-xs"></i>
+          <span data-i18n="contact_badge">LET'S TEAM UP & SHIP IT!</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-i18n="contact_title">Ready to Kick Off Your Next Project? Let's Build It Together!</h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-8 text-base leading-relaxed" data-i18n="contact_sub">
+          Got an idea in mind, a design waiting for code, or need a developer who gets things done? Let's connect right now, talk details, and bring your vision to life today!
+        </p>
 
-      <div class="inline-flex flex-wrap items-center justify-center gap-4">
-        <a href="mailto:Khegazy61@gmail.com" class="px-5 py-3 rounded-xl bg-brand-500 text-white dark:text-slate-950 font-bold text-sm inline-flex items-center gap-2 shadow-lg shadow-brand-500/20 hover:bg-brand-400 transition-all">
-          <i class="fa-regular fa-envelope"></i> Khegazy61@gmail.com
-        </a>
-        
-        <a href="https://linkedin.com/in/kareem-hegazy2" target="_blank" class="px-5 py-3 rounded-xl bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 font-medium text-sm inline-flex items-center gap-2 hover:border-brand-500 transition-all">
-          <i class="fa-brands fa-linkedin text-brand-500"></i> LinkedIn
-        </a>
-        <a href="https://github.com/KareemHegazy2" target="_blank" class="px-5 py-3 rounded-xl bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 font-medium text-sm inline-flex items-center gap-2 hover:border-brand-500 transition-all">
-          <i class="fa-brands fa-github text-brand-500"></i> GitHub
-        </a>
+        <div class="inline-flex flex-wrap items-center justify-center gap-4">
+          <a href="mailto:Khegazy61@gmail.com" class="px-6 py-3.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white dark:text-slate-950 font-bold text-sm inline-flex items-center gap-2.5 shadow-lg shadow-brand-500/25 transition-all hover:scale-105">
+            <i class="fa-regular fa-envelope text-base"></i> Khegazy61@gmail.com
+          </a>
+          <a href="https://linkedin.com/in/kareem-hegazy2" target="_blank" class="px-6 py-3.5 rounded-xl bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 font-medium text-sm inline-flex items-center gap-2.5 hover:border-brand-500 transition-all hover:scale-105">
+            <i class="fa-brands fa-linkedin text-brand-500 text-base"></i> LinkedIn
+          </a>
+          <a href="https://github.com/KareemHegazy2" target="_blank" class="px-6 py-3.5 rounded-xl bg-white dark:bg-darkCard border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 font-medium text-sm inline-flex items-center gap-2.5 hover:border-brand-500 transition-all hover:scale-105">
+            <i class="fa-brands fa-github text-brand-500 text-base"></i> GitHub
+          </a>
+        </div>
       </div>
     </section>
 
@@ -538,14 +630,74 @@
     }
     animateParticles();
 
-    // 3. Strict CV Localization Engine (Arabic & English)
+    // 3. Scroll-to-Top on Brand/Logo Click & Smooth Navigation
+    const brandTopBtn = document.getElementById('brand-scroll-top');
+    if (brandTopBtn) {
+      brandTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+
+    document.querySelectorAll('.nav-scroll-link').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId && targetId.startsWith('#')) {
+          e.preventDefault();
+          if (targetId === '#top') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+          }
+          const targetElem = document.querySelector(targetId);
+          if (targetElem) {
+            const headerOffset = 80;
+            const elementPosition = targetElem.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // 4. Interactive Card Click Ripple Animation
+    document.querySelectorAll('.interactive-card').forEach(card => {
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('a')) return;
+
+        const rect = card.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.classList.add('card-ripple');
+
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = `${size}px`;
+        ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+        ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+
+        card.appendChild(ripple);
+
+        setTimeout(() => {
+          ripple.remove();
+        }, 650);
+      });
+    });
+
+    // 5. Strict Localization
     const cvLocales = {
       en: {
         personal_name: "Kareem Hegazy",
         personal_title: "Software Engineer",
         hero_status: "Available for Front-End & Software Projects",
+        loader_welcome: "Welcome to my engineering space",
         nav_about: "About",
         nav_exp: "Experience",
+        nav_courses: "Certificates",
         nav_skills: "Skills",
         nav_projects: "Projects",
         nav_contact: "Contact",
@@ -558,7 +710,7 @@
         degree_name: "B.Sc. Computer Science",
         uni_name: "Shorouk Academy",
         sec_experience: "EXPERIENCE",
-        exp_ieee_date: "Feb 2026-Aug 2026",
+        exp_ieee_date: "Feb 2026 - Aug 2026",
         exp_ieee_desc: "Python fundamentals, data analysis with NumPy & Pandas, Data Visualization, Data Preprocessing, Machine Learning & Model Evaluation, and Deployment.",
         exp_ieee_capstone_label: "Final Capstone Project:",
         exp_ieee_capstone_val: "Developing a Machine Learning model for Flight Delay Prediction.",
@@ -578,16 +730,19 @@
         proj_2_b2: "Structured modular code using functions and loops, with exception handling to manage invalid user inputs.",
         proj_3_b1: "Developed a CLI banking application featuring user authentication (registration/login) and account management.",
         proj_3_b2: "Implemented core banking operations: balance inquiry, deposits, withdrawals, fund transfers between accounts, and password updates.",
-        contact_title: "Get In Touch",
-        contact_sub: "Feel free to reach out directly via email, phone, or view my latest activities on LinkedIn and GitHub.",
+        contact_badge: "LET'S TEAM UP & SHIP IT!",
+        contact_title: "Ready to Kick Off Your Next Project? Let's Build It Together!",
+        contact_sub: "Got an idea in mind, a design waiting for code, or need a developer who gets things done? Let's connect right now, talk details, and bring your vision to life today!",
         footer_rights: "All CV specifications preserved."
       },
       ar: {
         personal_name: "كريم حجازي",
         personal_title: "مهندس برمجيات",
         hero_status: "متاح لمشاريع الـ Front-End وتطوير البرمجيات",
+        loader_welcome: "مرحباً بك في مساحتي الهندسية والبرمجية",
         nav_about: "الملف الشخصي",
         nav_exp: "الخبرات",
+        nav_courses: "الشهادات والكورسات",
         nav_skills: "المهارات",
         nav_projects: "المشاريع",
         nav_contact: "تواصل معي",
@@ -600,7 +755,7 @@
         degree_name: "بكالوريوس علوم الحاسب",
         uni_name: "أكاديمية الشروق",
         sec_experience: "الخبرات (EXPERIENCE)",
-        exp_ieee_date: "2025 - حتى الآن",
+        exp_ieee_date: "فبراير 2026 - أغسطس 2026",
         exp_ieee_desc: "أساسيات Python، تحليل البيانات بـ NumPy و Pandas، وتصور البيانات (Data Visualization)، ومعالجة البيانات مسبقاً (Data Preprocessing)، وتعلم الآلة وتقييم النماذج والنشر (Deployment).",
         exp_ieee_capstone_label: "مشروع التخرج النهائي للورشة:",
         exp_ieee_capstone_val: "تطوير نموذج Machine Learning للتنبؤ بمخاطر تأخر الرحلات الجوية.",
@@ -620,8 +775,9 @@
         proj_2_b2: "هيكلة كود معياري باستخدام الدوال والتكرار (Loops)، مع معالجة الاستثناءات للتعامل مع مدخلات المستخدم غير الصحيحة.",
         proj_3_b1: "تطوير تطبيق بنكي عبر سطر الأوامر (CLI) يدعم مصادقة المستخدمين (تسجيل الحساب/تسجيل الدخول) وإدارة الحسابات.",
         proj_3_b2: "تنفيذ العمليات المصرفية الأساسية: الاستعلام عن الرصيد، الإيداع، السحب، تحويل الأموال بين الحسابات، وتحديث كلمات المرور.",
-        contact_title: "تواصل معي",
-        contact_sub: "يسعدني تواصلك المباشر عبر البريد الإلكتروني أو الهاتف أو الاطلاع على أحدث نشاطاتي على LinkedIn و GitHub.",
+        contact_badge: "يلا نبدأ ونشتغل سوا!",
+        contact_title: "جاهز تبدأ مشروعك القادم؟ يلا نشتغل سوا ونبنيه فوراً!",
+        contact_sub: "عندك فكرة مشروع في بالك، تصميم مستني الكود، أو محتاج مطور ينجز المطلوب بأعلى كفاءة؟ يلا نتواصل دلوقتي، نتفق على التفاصيل، ونحول فكرتك لواقع تفاعلي يشتغل على طول!",
         footer_rights: "جميع مواصفات السيرة الذاتية محفوظة."
       }
     };
@@ -647,7 +803,7 @@
 
     langBtn.addEventListener('click', () => switchLanguage(curLang === 'en' ? 'ar' : 'en'));
 
-    // 4. Dark / Light Mode with Automatic Logo Swapping
+    // 6. Dark / Light Mode with Strict Equalized Scaling
     const themeBtn = document.getElementById('theme-btn');
     const themeIcon = themeBtn.querySelector('i');
     const navLogo = document.getElementById('navbar-logo');
@@ -674,7 +830,7 @@
       applyTheme(!isDark);
     });
 
-    // 5. Mobile Drawer Toggle
+    // 7. Mobile Drawer Toggle
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -683,7 +839,7 @@
       link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
     });
 
-    // Boot
+    // Booting Defaults
     const savedTheme = localStorage.getItem('kh_theme') || 'dark';
     applyTheme(savedTheme === 'dark');
     switchLanguage(curLang);
